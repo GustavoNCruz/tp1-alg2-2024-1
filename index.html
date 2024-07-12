@@ -19,16 +19,16 @@
             </div>
             <ul class="navbar__menu">
                 <li class="navbar__item">
-                    <a href="problem_description" class="navbar__links">Problema</a>
+                    <a href="#problema" class="navbar__links">Problema</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="metodologia" class="navbar__links">Metodologia</a>
+                    <a href="#metodologia" class="navbar__links">Metodologia</a>
                 </li>
                 <li class="navbar__item">
-                    <a href="about.html" class="navbar__links">Conclusão</a>
+                    <a href="#conclusao" class="navbar__links">Conclusão</a>
                 </li>
                 <li class="navbar__btn">
-                    <a href="user_login.html" class="button">Galeria</a>
+                    <a href="https://github.com/GustavoNCruz/tp1-alg2-2024-1" class="button">Repositório</a>
                 </li>
             </ul>
         </div>
@@ -61,31 +61,128 @@
                 <div class="metodologia" id="metodologia">
                     <h1>Metodologia</h1>
                     <h2>Usando teoria dos grafos para te salvar uma fortuna em câmeras!</h2>
-                    <h4>Triangulação</h4>
-                    <p>Primeiramente, consideraremos que a galeria tem apenas um andar cuja planta pode ser representada por um polígono.
-                        Para resolver o <span style="color: #1c9965;">Problema da Galeria de Arte</span> vamos realizar a triangulação desse polígono, que vai nos
-                        mostrar uma representação mais simples dele e uma noção da "visibilidade" da galeria.
+                    <h4>Triangulação e orelhas?</h4>
+                    <p>
+                        Primeiramente, consideraremos que a galeria tem apenas um andar cuja planta pode ser representada por um polígono, e que as 
+                        câmeras possuem um alcance maior ou igual à maior distância entre quaisquer dois pontos do polígono. 
                     </p>
-                    <div class="code">
-                        <pre>
-                            <code>
-                                // Your code snippet goes here
-                                function triangulatePolygon(polygon) {
-                                    // Code to triangulate the polygon
-                                    // Example:
-                                    // return triangles;
-                                }
-                            </code>
-                        </pre>
+                    <p>
+                        Esse problema é um problema conhecido da área de teoria dos grafos e geometria computacional e é classificado como NP-difícil,
+                        porém é possível resolvê-lo em tempo hábil para polígonos mais bem comportados.
+                        Para resolver o <span style="color: #1c9965;">Problema da Galeria de Arte</span> vamos realizar a triangulação desse polígono 
+                        (dividi-lo em triângulos), que vai nos mostrar uma representação mais simples dele e uma noção da "visibilidade" da galeria.
+                    </p>
+                    <p>
+                        Mas antes, precisamos entender o que raios é uma orelha pois vamos usar um algoritmo chamado decomposição em orelhas para 
+                        identificar os triângulos. Uma orelha é uma sequência de vértices onde, ao fixar um vértice e percorrer os vértices da sequência 
+                        no sentido anti-horário, conseguimos formar um triângulo.
+                    </p>
+                    <p>
+                        Abaixo você pode ver o algoritmo que calcula se um vértice é uma ponta de orelha.
+                    </p>
+                    <div class="code" style="font-family: Courier, monospace; font-size: 1.2em;">
+                        <script src="https://gist.github.com/belatavaresp/74cc7c07642ab4435b90e3dec42513bc.js"></script>
                     </div>
                     <p>
+                        Agora podemos realizar a triangulação da galeria, que é feita armazenando os vértices adjacentes, identificando os que formam "orelhas"
+                        e ao encontrarmos uma orelha, adicionamos seu triângulo correspondente à lista de triangulações, removemos o vértice da orelha e atualizamos os vizinhos. 
+                        Esse processo continua até que o polígono seja completamente dividido em triângulos, que são então retornados.
                     </p>
+                    <div class="code">
+                        <script src="https://gist.github.com/belatavaresp/c51c6e329a372eb45f89056ec415ccbd.js"></script>
+                    </div>
+                    <p>
+                        Vamos ver como esse algoritmo age na galeria com formato inspirado na Basílica de Saint-Sernin em Toulouse na França
+                    </p>
+                    <div class="image__standard--container">
+                        <img src="./imgs/triangulacao.gif" alt="triangulacao" class="image__standard">
+                    </div>
+                    <h4>Grafo dual e brincando de colorir</h4>
+                    <p>
+                        Agora que temos uma triangulação da nossa galeria queremos tentar posicionar as câmeras nos vértices desses triângulos,
+                        mas perceba que alguns deles possuem vértices iguais e se escolhermos de forma esperta esses locais para as câmeras,
+                        conseguimos vigiar mais triângulos com menos câmeras, que é nosso objetivo.
+                    </p>
+                    <p>
+                        Para descobrir quais são esses vértices precisamos primeiro entender o relacionamento dos triângulos, ou seja, precisamos
+                        saber quais deles compartilham vértices. Isso pode ser feito encontrando o <span style="color: #1c9965;">grafo dual da triangulação</span>,
+                        que nada mais é do que considerar cada triângulo como um vértice e adicionar arestas entre os vértices de triângulos que compartilham uma "lateral"
+                        (duas pontas).
+                    </p>
+                    <p>
+                        Veja abaixo o código desse algoritmo que obtém o grafo dual de uma triangulação
+                    </p>
+                    <div class="code">
+                        <script src="https://gist.github.com/belatavaresp/31375eae244f5177bf358c38271b729b.js"></script>
+                    </div>
+                    <p>
+                        Vamos ver como o grafo dual da galeria da Basílica de Saint-Sernin ficaria, à esquerda temos sua triangulação e à direita o grafo dual
+                    </p>
+                    <div class="image__standard--container">
+                        <img src="./imgs/dual.png" alt="dual" class="image__standard">
+                    </div>
+                    <p>
+                        Ótimo! Agora que já sabemos quais triângulos são adjascentes podemos encontrar os vértices que pertencem à maior quantidade de
+                        triângulos ao mesmo tempo. Vamos conseguir fazer isso brincando um pouco de colorir!
+                    </p>
+                    <p>
+                        Vamos realizar uma coloração gulosa, que tem a restrição: dois vértices vizinhos não podem ser coloridos de uma mesma cor. 
+                        E como sabemos que em todos os triângulos cada vértice têm no máximo dois vizinhos, então podemos colorir toda a 
+                        triangulação com apenas <span style="color: #1c9965;">três cores.</span>
+                    </p>
+                    <p>
+                        O algoritmo que atribui as cores para cada vértice é uma busca em profundidade (Depth First Search) no grafo dual. Esse algoritmo
+                        começa atribuindo uma coloração para um triângulo, e ao seguir para seu triângulo adjascente no dual resta apenas uma cor possível 
+                        para se colorir o vértice que não é compartilhado com o triângulo anterior. Esse passo se repete até que todos os triângulos estejam
+                        3-coloridos.
+                    </p>
+                    <p>
+                        Veja abaixo o trecho de código que realiza a coloração da triangulação dessa forma
+                    </p>
+                    <div class="code">
+                        <script src="https://gist.github.com/belatavaresp/7747a98591e0ccad11fe98cb7b74d2f4.js"></script>
+                    </div>
+                    <p>
+                        Agora vamos ver como esse algoritmo colore a Basílica de Saint-Sernin
+                    </p>
+                    <div class="image__standard--container">
+                        <img src="./imgs/coloring.gif" alt="coloring" class="gif__standard">
+                    </div>
+                    <p>
+                        Por fim, precisamos saber qual cor coloriu a menor quantidade de vértices, e esses serão os locais das câmeras.
+                        Isso por que, todos os triângulos possuem um vértice de cada cor, logo, mesmo ela sendo a cor que coloriu a menor
+                        quantidade de vértices, ela ainda cobre todos os triângulos, e portanto conseguimos vigiar toda a galeria 
+                        apartir desses pontos.
+                    </p>
+                    <p>
+                        No caso da Basílica de Saint-Sernin, a cor que atingiu a maior quantidade de triângulos ao mesmo tempo foi a 
+                        cor azul, o que faz sentido pois a maior parte dos triângulos está conectado com o ponto do canto esquerdo do polígono,
+                        e colocar uma câmera ali garantiria que toda aquela área fosse coberta por apenas uma câmera.
+                    </p>
+                    <div class="image__standard--container">
+                        <img src="./imgs/end.png" alt="final" class="gif__standard">
+                    </div>
                 </div>
                 <div class="conclusao" id="conclusao">
                     <h1>Conclusão</h1>
+                    <p>
+                        E pronto! Agora você sabe como proteger sua galeria de arte de forma inteligente e econômica.
+                        Usando teoria dos grafos e um pouco de geometria, conseguimos transformar a galeria em um polígono triangulado e dessa
+                        triangulação obtivemos o relacionamento dos triângulos apartir do seu grafo dual que nos auxiliou no processo de coloração,
+                        que por sua vez descobre a localização e a menor quantidade das câmeras necessárias para vigiar a galeria.
+                    </p>
+                    <p>
+                        Todos os códigos providos aqui foram desenvolvidos pelos alunos <span style="color: #1c9965;">Izabela Garcia Tavares Pinheiro Pérez</span> e 
+                        <span style="color: #1c9965;">Gustavo Neves da Cruz</span> para a disciplina de Algoritmos II e são apenas trechos do código
+                        completo, então podem sofrer erros de compilação.
+                    </p>
                 </div>
-                <div class="galeria" id="galeria">
-                    <h1>Galeria</h1>
+                <div class="repositorio" id="repositorio">
+                    <h1>Repositório</h1>
+                    <p>
+                        O repositório do Github com o trabalho completo e em forma de Notebook Jupyter interativo está no link: 
+                        <a href="https://github.com/GustavoNCruz/tp1-alg2-2024-1" target="_blank">Problema da Galeria de Arte - TP1 Algoritmos II</a>
+                    </p>
                 </div>
             </div>
         </div>

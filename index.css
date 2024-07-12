@@ -22,7 +22,6 @@ src: url('./Fonts/Montserrat-ExtraBold.ttf') format('truetype');
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'BodyFont', sans-serif;
 }
 
 .navbar{
@@ -75,6 +74,8 @@ src: url('./Fonts/Montserrat-ExtraBold.ttf') format('truetype');
 
 .navbar__item{
   height: 80px;
+  font-family: 'BodyFont';
+  font-size: 1.1rem;
 }
 
 .navbar__links{
@@ -93,6 +94,8 @@ src: url('./Fonts/Montserrat-ExtraBold.ttf') format('truetype');
   align-items: center;
   padding: 0 1rem;
   width: 100%;
+  font-family: 'BodyFont';
+  font-size: 1.1rem;
 }
 
 .button{
@@ -215,6 +218,12 @@ src: url('./Fonts/Montserrat-ExtraBold.ttf') format('truetype');
   }
 }
 
+.code {
+  font-family: Courier, monospace; /* Use Courier font */
+  font-size: 1.4em; /* Increase font size */
+  margin-bottom: 1em; /* Optional: Adjust spacing between embeds */
+}
+
 .main{
   background-color: #fff;
 }
@@ -270,6 +279,7 @@ src: url('./Fonts/Montserrat-ExtraBold.ttf') format('truetype');
   line-height: 4rem;
   font-family: 'TitleFont';
   font-weight: 500;
+  margin-top: 1rem;
 }
 
 .main__content p{
@@ -282,10 +292,24 @@ src: url('./Fonts/Montserrat-ExtraBold.ttf') format('truetype');
 }
 
 .main__img {
-  margin-top: 45rem;
+  margin-top: 510rem;
   width: 1518px; /* Adjust the width */
   height: auto; /* Maintain aspect ratio */
   margin-bottom: 5rem;
+}
+
+.image__standard--container {
+  align-items: center;
+}
+
+.image__standard {
+  width: 700px;
+  height: auto;
+}
+
+.gif__standard {
+  width: 500px;
+  height: auto;
 }
 
 .main__btn{
@@ -320,10 +344,6 @@ src: url('./Fonts/Montserrat-ExtraBold.ttf') format('truetype');
 
 .main__img--container {
   text-align: center;
-}
-
-.code{
-  font-family: 'Courier New', Courier, monospace;
 }
 
 @media screen and (max-width: 1100px) {
@@ -413,10 +433,11 @@ src: url('./Fonts/Montserrat-ExtraBold.ttf') format('truetype');
 
 footer {
   background-color: #000;
-  margin-top: 1000px;
+  margin-top: 8300px;
   color: #fff;
   padding: 20px 0;
   text-align: center;
+  font-family: 'BodyFont';
 }
 
 @media screen and (max-width: 1100px) {
