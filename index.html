@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problema da Galeria de Arte</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>   
+    <nav class="navbar">
+        <div class="navbar__container">
+            <a href="index.html" id="navbar__logo">
+                <img src="./imgs/1.png" alt="Logo">
+            </a>
+            <div class="navbar__toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar__menu">
+                <li class="navbar__item">
+                    <a href="problem_description" class="navbar__links">Problema</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="metodologia" class="navbar__links">Metodologia</a>
+                </li>
+                <li class="navbar__item">
+                    <a href="about.html" class="navbar__links">Conclusão</a>
+                </li>
+                <li class="navbar__btn">
+                    <a href="user_login.html" class="button">Galeria</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="main" id="Home">
+        <div class="main__container">
+            <div class="main__img--container">
+                <img src="./imgs/cover.png" alt="cover" class="main__img">
+            </div>
+            <div class="main__content">
+                <div class="problema" id="problema">
+                    <h1>Problema</h1>
+                    <h2>A arte de proteger (e economizar)</h2>
+                    <p>Imagine que você é um amante das artes e resolve abrir sua própria galeria de arte. 
+                        Você faz todas as suas economias para inaugurar o local, e no grande dia tudo corre bem
+                        e seus clientes amaram a curadoria. Porém, quando você termina o evento e está fechando a galeria descobre
+                        que <span style="color: #1c9965;">um dos quadros foi roubado!</span>
+                    </p>
+                    <p>Nesse momento você percebe que pensou em tudo, menos nas câmeras de segurança para
+                        proteger suas obras e agora está com um orçamento apertado para comprar câmeras para todos os cantos do local.
+                    </p>
+                    <p> Você então tem uma ideia! A galeria possui alguns locais mais amplos e abertos que podem ser cobertos por menos câmeras,
+                        mas você não sabe quais os pontos ideais para colocá-las. E agora você se encontra em um dilema: 
+                    </p>
+                    <h3>Qual é o melhor local para colocar as câmeras de forma à precisar da menor quantidade delas possível e ainda ter todos
+                        os cantos da galeria vigiados?
+                    </h3>
+                </div>
+                <div class="metodologia" id="metodologia">
+                    <h1>Metodologia</h1>
+                    <h2>Usando teoria dos grafos para te salvar uma fortuna em câmeras!</h2>
+                    <h4>Triangulação</h4>
+                    <p>Primeiramente, consideraremos que a galeria tem apenas um andar cuja planta pode ser representada por um polígono.
+                        Para resolver o <span style="color: #1c9965;">Problema da Galeria de Arte</span> vamos realizar a triangulação desse polígono, que vai nos
+                        mostrar uma representação mais simples dele e uma noção da "visibilidade" da galeria.
+                    </p>
+                    <div class="code">
+                        <pre>
+                            <code>
+                                // Your code snippet goes here
+                                function triangulatePolygon(polygon) {
+                                    // Code to triangulate the polygon
+                                    // Example:
+                                    // return triangles;
+                                }
+                            </code>
+                        </pre>
+                    </div>
+                    <p>
+                    </p>
+                </div>
+                <div class="conclusao" id="conclusao">
+                    <h1>Conclusão</h1>
+                </div>
+                <div class="galeria" id="galeria">
+                    <h1>Galeria</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <footer>
+        <p>Trabalho realizado para a disciplina de Algoritmos II</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
