@@ -7,17 +7,15 @@
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="./imgs/icon.svg" type="image/x-icon">
 </head>
-<body>   
+<body>
+    <button id="goTopBtn" onclick="goToTop()">
+        <img src="./imgs/top.svg" alt="Scroll to Top">
+    </button>   
     <nav class="navbar">
         <div class="navbar__container">
             <a href="index.html" id="navbar__logo">
                 <img src="./imgs/1.png" alt="Logo">
             </a>
-            <div class="navbar__toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
             <ul class="navbar__menu">
                 <li class="navbar__item">
                     <a href="#problema" class="navbar__links">Problema</a>
@@ -41,6 +39,17 @@
                 <img src="./imgs/cover.png" alt="cover" class="main__img">
             </div>
             <div class="main__content">
+                <div class="disclaimer">
+                    <h3>
+                        Essa é apenas uma demonstração do programa desenvolvido em um notebook interativo. 
+                        Você pode interagir com nossa solução acessando seu GitHub pelo botão "Repositório" 
+                        no canto superior direito. 
+                    </h3>
+                    <h3>
+                        Note que este site foi otimizado para visualização em computadores e pode não funcionar corretamente 
+                        em dispositivos móveis.
+                    </h3>
+                </div>
                 <div class="problema" id="problema">
                     <h1>Problema</h1>
                     <h2>A arte de proteger (e economizar)</h2>
@@ -76,7 +85,7 @@
                     <p>
                         Mas antes, precisamos entender o que raios é uma orelha pois vamos usar um algoritmo chamado decomposição em orelhas para 
                         identificar os triângulos. Uma orelha é uma sequência de vértices onde, ao fixar um vértice e percorrer os vértices da sequência 
-                        no sentido anti-horário, conseguimos formar um triângulo.
+                        no sentido anti-horário, conseguimos formar um triângulo que não contém nenhum outro vértice dentro.
                     </p>
                     <p>
                         Abaixo você pode ver o algoritmo que calcula se um vértice é uma ponta de orelha.
@@ -93,10 +102,12 @@
                         <script src="https://gist.github.com/belatavaresp/c51c6e329a372eb45f89056ec415ccbd.js"></script>
                     </div>
                     <p>
-                        Vamos ver como esse algoritmo age na galeria com formato inspirado na Basílica de Saint-Sernin em Toulouse na França
+                        Vamos ver como esse algoritmo age na galeria com formato inspirado na Basílica de Saint-Sernin em Toulouse na França, na
+                        animação os triângulos vermelhos são as sequências de pontos que estão sendo testados mas não são orelhas, e os verdes aqueles que
+                        formam orelhas (triângulos que farão parte da triangulação).
                     </p>
                     <div class="image__standard--container">
-                        <img src="./imgs/triangulacao.gif" alt="triangulacao" class="image__standard">
+                        <img src="./imgs/triang.gif" alt="triangulacao" class="image__standard">
                     </div>
                     <h4>Grafo dual e brincando de colorir</h4>
                     <p>
@@ -158,7 +169,8 @@
                     <p>
                         No caso da Basílica de Saint-Sernin, a cor que atingiu a maior quantidade de triângulos ao mesmo tempo foi a 
                         cor azul, o que faz sentido pois a maior parte dos triângulos está conectado com o ponto do canto esquerdo do polígono,
-                        e colocar uma câmera ali garantiria que toda aquela área fosse coberta por apenas uma câmera.
+                        e colocar uma câmera ali garantiria que toda aquela área fosse coberta por apenas uma câmera e, dessa forma, concluimos
+                        que para colorir essa galeria precisariamos de 65 câmeras.
                     </p>
                     <div class="image__standard--container">
                         <img src="./imgs/end.png" alt="final" class="gif__standard">
