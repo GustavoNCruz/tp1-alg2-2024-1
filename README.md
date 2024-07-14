@@ -6,3 +6,4 @@ Todos os códigos e animações interativas estão no Notebook Jupiter chamado "
 
 Arquivos de entrada retirados de <https://www.ic.unicamp.br/~cid/Problem-instances/Art-Gallery/AGPVG/index.html>
 
+Link do github pages: <https://gustavoncruz.github.io/tp1-alg2-2024-1/>
